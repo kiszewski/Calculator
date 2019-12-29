@@ -9,4 +9,27 @@
     border: none;
     border-right: solid 1px var(--border-button);
     border-bottom: solid 1px var(--border-button);
+    font-size: 1.2em;
+    outline: none;
+}
+
+.button:active {
+    background-color: #ccc;
+}
+
+.button.double {
+    grid-column-end: span 2;
+}
+
+.button.triple {
+    grid-column-end: span 3;
+}
+
+.button.operation {
+    background-color: #dd8c2f;
+    color: #fff;
+}
+
+.button.operation:active {
+    background-color: #885419;
 }
