@@ -2,5 +2,10 @@
     height: 350px;
     width: 240px;
     border-radius: 5px;
-    background-color: red;  /* temporario */
+    overflow: hidden;
+    font-size: 1.4em;
+    
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 48px 48px 48px 48px 48px;
 }

@@ -1,0 +1,12 @@
+/* uso de variaveis */
+:root {
+    --bg-button: #f0f0f0;
+    --border-button: #8b8b8b;
+}
+
+.button {
+    background-color: var(--bg-button);
+    border: none;
+    border-right: solid 1px var(--border-button);
+    border-bottom: solid 1px var(--border-button);
+}
