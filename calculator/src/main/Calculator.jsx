@@ -37,9 +37,9 @@ export default class Calculator extends Component {
 
         const currentValue = clearDisplay ? '' : this.state.displayValue
         const displayValue = currentValue + n
-        this.setState({displayValue, clearDisplay: false})
+        this.setState({ displayValue, clearDisplay: false })
 
-        if(n != '.') {
+        if (n != '.') {
             const i = this.state.current
             const newValue = parseFloat(displayValue)
             const values = this.state.values
@@ -58,10 +58,27 @@ export default class Calculator extends Component {
 
             const values = this.state.values
             try {
-                values[0] = eval(`${values[0]} ${currentOperation} ${values[1]}`)
-                } catch(e) { 
-                    values[0] = this.state.values[0]
+                switch (currentOperation) {
+                    case '+':
+                        values[0] = values[0] + values[1]
+                        break;
+                    
+                    case '-':
+                        values[0] = values[0] - values[1]
+                        break;
+                    
+                    case '*':
+                        values[0] = values[0] * values[1]
+                        break;
+        
+                    case '/':
+                        values[0] = values[0] / values[1]
+                        break;
                 }
+
+            } catch (e) {
+                values[0] = this.state.values[0]
+            }
             values[1] = 0
 
             this.setState({
@@ -74,29 +91,29 @@ export default class Calculator extends Component {
         }
     }
 
-    render() {
-        return (
-            <div className="calculator">
-                <Display value={this.state.displayValue} />
-                <Button label="AC" click={this.clearMemory} triple/>
-                <Button label="/" click={this.setOperation} operation/>
-                <Button label="7" click={this.addDigit} />
-                <Button label="8" click={this.addDigit}  />
-                <Button label="9" click={this.addDigit}  />
-                <Button label="*" click={this.setOperation} operation/>
-                <Button label="4" click={this.addDigit}  />
-                <Button label="5" click={this.addDigit}  />
-                <Button label="6" click={this.addDigit}  />
-                <Button label="-" click={this.setOperation} operation/>
-                <Button label="1" click={this.addDigit}  />
-                <Button label="2" click={this.addDigit}  />
-                <Button label="3" click={this.addDigit}  />
-                <Button label="+" click={this.setOperation} operation/>
-                <Button label="0" click={this.addDigit} double/>
-                <Button label="." click={this.addDigit} />
-                <Button label="=" click={this.setOperation} operation/>
-            </div>
-        )
-    }
+render() {
+    return (
+        <div className="calculator">
+            <Display value={this.state.displayValue} />
+            <Button label="AC" click={this.clearMemory} triple />
+            <Button label="/" click={this.setOperation} operation />
+            <Button label="7" click={this.addDigit} />
+            <Button label="8" click={this.addDigit} />
+            <Button label="9" click={this.addDigit} />
+            <Button label="*" click={this.setOperation} operation />
+            <Button label="4" click={this.addDigit} />
+            <Button label="5" click={this.addDigit} />
+            <Button label="6" click={this.addDigit} />
+            <Button label="-" click={this.setOperation} operation />
+            <Button label="1" click={this.addDigit} />
+            <Button label="2" click={this.addDigit} />
+            <Button label="3" click={this.addDigit} />
+            <Button label="+" click={this.setOperation} operation />
+            <Button label="0" click={this.addDigit} double />
+            <Button label="." click={this.addDigit} />
+            <Button label="=" click={this.setOperation} operation />
+        </div>
+    )
+}
 }
 
